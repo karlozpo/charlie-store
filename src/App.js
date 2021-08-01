@@ -1,27 +1,23 @@
 //import logo from './spin.svg';
+//import CardComponent from './components/CarComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
+import ItemCardList from './components/ItemListContainer';
 
 import './App.css';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App backSite">
       <header className="App-header">
-        <img className="img-fluid" src={'https://media.giphy.com/media/3o7bubCmPeUyHHQ9zO/giphy.gif'}  alt="logo"  />
-      
-        <p>
-         Mi tienda online con react js
-        </p>
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          
-          Aprendiendo React
-        </a> */}
+      <NavBar />
       </header>
+     <div className="container">
+     <div className="row">
+      <ItemCardList/>
+      </div>
+      </div>
     </div>
     
   );

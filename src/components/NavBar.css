@@ -4,3 +4,25 @@
 .menuTop{
     padding-left: 20px;
 }
+.nav-link:hover{
+    background-color: #30492c;
+    color: white !important;
+    border-color: default;
+}
+.btn-light{
+   border: none;
+   
+}
+
+@media (max-width: 576px) {
+    .btn-light{
+        border-radius: 0;
+        border-bottom: 1px solid #30492c;
+        color: #30492c !important;
+        background-color: transparent;
+    }
+    
+    .navbar-nav{
+        margin-top: 10px;
+    }
+ }
