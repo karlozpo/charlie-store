@@ -9,6 +9,23 @@
 body{
   background-color: #a7c4a9;
 }
+.contador{
+  background-color: white;
+  border-radius: 3px;
+  font-weight: bold;
+}
+.btnContador{
+  border: none;
+  background-color: #145a5a;
+  color: white;
+  font-weight: 800;
+}
+.btnContador:hover{
+  border: none;
+  background-color: #23a0a0;
+  color: white;
+  font-weight: 800;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
