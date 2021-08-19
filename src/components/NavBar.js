@@ -4,6 +4,7 @@ import "bootstrap/js/src/collapse.js";
 import CardWidget from './CardWidget';
 
 import './NavBar.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,7 +15,7 @@ function NavBar() {
     <div className="bg-dollar">
       <div className="container ">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <CardWidget />
+         
           <a className="navbar-brand" href={'https://es.reactjs.org/'} target={'blank'} >
 
             La Bodeguita</a>
@@ -23,14 +24,14 @@ function NavBar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-item nav-link btn btn-light mx-1" href={'https://es.reactjs.org/'} target={'blank'}>Home</a>
-              <a className="nav-item nav-link btn btn-light mx-1" href={'https://es.reactjs.org/'} target={'blank'}>Productos</a>
-              <a className="nav-item nav-link btn btn-light mx-1" href={'https://es.reactjs.org/'} target={'blank'}>Precios</a>
-              <a className="nav-item nav-link btn btn-light mx-1" href={'https://es.reactjs.org/'} target={'blank'}>Contacto</a>
+              <Link className="nav-item nav-link btn btn-light mx-1" to="/" >Home</Link>
+              <Link className="nav-item nav-link btn btn-light mx-1" to="/productos" >Productos</Link>
+              <Link className="nav-item nav-link btn btn-light mx-1" to="/ofertas" >Ofertas</Link>
+              <Link className="nav-item nav-link btn btn-light mx-1" to="/contacto">Contacto</Link>
             </div>
           </div>
 
-
+          <CardWidget />
         </nav>
       </div>
     </div>
