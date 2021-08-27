@@ -1,32 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
+import { productsJson } from "./productsJson";
+
 const { useEffect, useState } = require("react");
 
 export default function ItemList() {
-    // const [products, setProducts] = useState([]);
-    const [personajes, setPersonajes] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // const [pagina, setPagina] = useState(0);
 
-    // function nextPage() {
-    //     pagina++;
-    //     setPagina();
-    //     console.log(pagina);
-    // }
-
-    const getPersonajes = async () => {
-        try {
-          setLoading(true);
-          const response = await fetch("https://rickandmortyapi.com/api/character", {
-            "method": "GET"
-        });
-          // esto siempre se hace usando fetch
-          const data = await response.json();
+    const getProducts = async () => {
+        
+      try {
+          setLoading(true);  
+          new Promise((resolve, reject) => {
+            setLoading(true);
+            setTimeout(() => resolve(productsJson), 3000);
+          }).then((data) => setProducts(data))
+          .finally(() => {
+            setLoading(false);
+          });
     
-          console.log("data", data);
-          setPersonajes(data.results);
           setLoading(false);
         } catch (error) {
           console.log(error);
@@ -36,47 +31,7 @@ export default function ItemList() {
 
     useEffect(() => {
        
-        getPersonajes();
-
-
-        // new Promise((resolve, reject) => {
-        //     ///
-        //     const data = [
-        //         {
-        //             id: "1",
-        //             name: "Oranges",
-        //             description: "naranjas ricas",
-        //             pictureUrl: "https://s3-us-west-2.amazonaws.com/melingoimages/Images/67174.jpg",
-        //             url:"#",
-        //             stock: 2
-        //         },
-        //         {
-        //             id: "2",
-        //             name: "Apples",
-        //             description: "Manzanas pomelos",
-        //             pictureUrl: "https://i.ibb.co/SrjjMBf/apple.jpg",
-        //             url:"#",
-        //             stock: 3
-        //         },
-        //         {
-        //             id: "3",
-        //             name: "Sandias",
-        //             description: "Patillas jugosas",
-        //             pictureUrl: "https://i.ibb.co/x33SYtF/sandia.jpg",
-        //             url:"#",
-        //             stock: 5
-        //         }
-        //     ];
-        //     setTimeout(() => resolve(data), 3000);
-        // })
-        //     .then((dataResolve) => {
-        //         console.log("data Resolve", dataResolve);
-        //         setProducts(dataResolve);
-        //     })
-        //     .catch((error) => {
-        //         console.log("err", error);
-        //     });
-
+        getProducts();
 
 
     }, []);
@@ -88,14 +43,14 @@ export default function ItemList() {
     return (
         <>
             {/** no va un h1, si no el componente Item, debemos pasarle las props de cada producto*/}
-            {personajes.map((cadaProducto) => (
+            {products.map((cadaProducto) => (
                 <div className="col-12 col-md-3" style={{backgroundColor:"white", marginTop:"10px", border:"3px solid #a8c4a9"}}>
                 <div className="card-body">
                 <h1>{cadaProducto.name}</h1>
                 <Link to={`/product-detail/${cadaProducto.id}`}>
                 <img src={cadaProducto.image} className="img-fluid" alt={cadaProducto.name}></img>
                 </Link>
-                <p className="card-text">{cadaProducto.strInstructions}</p>
+                <p className="card-text">{cadaProducto.description}</p>
                  
             <ItemCount inventario={0} />
             <br></br>
@@ -103,10 +58,6 @@ export default function ItemList() {
                 </div>
                 </div>
             ))}
-
-          {/* <Link to={"/productos"} className="btn btn-success">Next Page
-          <span onClick={()=> {pagina++}}>More</span>
-          </Link> */}
         </>
     );
 }

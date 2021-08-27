@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function CharacterDetail() {
     const { id } = useParams();
   
-    console.log("el id es", id);
-  
     const [character, setCharacter] = useState([]);
     const [loading, setLoading] = useState(false);
-  
-    
-  
+
     useEffect(() => {
         const getCharacters = async () => {
             try {
